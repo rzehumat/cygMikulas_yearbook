@@ -1,0 +1,17 @@
+# latex auxiliary files
+**/*.aux
+**/*.bbl
+**/*.bcf
+**/*.blg
+**/*fdb_latexmk
+**/*.fls
+**/*.log
+**/*.out
+**/*.run.xml
+**/*synctex.gz
+*.te~
+
+yearbook/figures/sponzori/*
+yearbook/papers/**
+yearbook/pdf/**
+*.swp

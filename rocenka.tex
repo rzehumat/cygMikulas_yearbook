@@ -1,0 +1,263 @@
+\documentclass[11pt,oneside]{article}
+
+% proper czech language
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+
+\usepackage{pdfpages}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{booktabs}
+
+\usepackage{xargs}
+\usepackage[bottom=2cm,left=2cm,right=2cm,top=2cm]{geometry}
+
+% to preserve links into pdfpages
+\usepackage{pax}
+\usepackage{xcolor}
+
+\titleformat*{\section}{\LARGE\bfseries}
+
+% hide horizontal lines, cause they are already in the articles
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\dayHeader}[1]{
+    \noindent\Large{{\color{blue}\textbf{#1}}}
+}
+
+\newcommand{\clanek}[3]{
+    \includepdf[
+        pages=-,
+        pagecommand={},
+        addtotoc={
+            1,subsection,2,
+            #3 (\textit{#2}),
+            #1}
+    ]
+    {./papers/#1.pdf}
+}
+
+% sponsors' footer for title page
+\newcommandx{\sponzori}[5]{%
+       \textit{Za podpory}
+       \vspace{0.1cm}
+       \hrule
+\begin{figure}[b]
+         % \href{\urlSponsor1}{\includegraphics[height=45px]{img/sponzori/#1}}
+         % \qquad
+         % \href{\urlSponsor2}{\includegraphics[height=45px]{img/sponzori/#2}}
+         % \qquad
+         % \href{\urlSponsor3}{\includegraphics[height=45px]{img/sponzori/#3}}
+         % \qquad
+         % \href{\urlSponsor4}{\includegraphics[height=45px]{img/sponzori/#4}}
+         % \qquad
+         % \href{\urlSponsor5}{\includegraphics[height=45px]{img/sponzori/#5}}
+\end{figure}
+}
+
+\fancypagestyle{patickaSponzoru}
+{
+    \fancyhead{}
+    \fancyfoot[C]{
+        \href{\urlSponsor1}{\includegraphics[height=35px]{./img/sponzori/logo1}}
+        \qquad
+        \href{\urlSponsor2}{\includegraphics[height=35px]{./img/sponzori/logo2}}
+        \qquad
+        \href{\urlSponsor3}{\includegraphics[height=35px]{./img/sponzori/logo3}}
+        \qquad
+        \href{\urlSponsor4}{\includegraphics[height=35px]{./img/sponzori/logo4}}
+        \qquad
+        \href{\urlSponsor5}{\includegraphics[height=35px]{./img/sponzori/logo5}}
+    }
+}
+
+\fancypagestyle{paper}
+{
+    \fancyhead{}
+    \fancyfoot[C]{\thepage}
+}
+
+\newcommand{\event}[4]{
+    \small{#1} & \small{--} & \small{#2} & \small{#4} \\
+     &  &  & (\small{\textit{#3}}) \\
+}
+\newcommand{\eventNoPer}[3]{
+    \small{#1} & \small{--} & \small{#2} & \small{#3} \\
+}
+
+\newcommand{\bigEvent}[2]{
+    \multicolumn{3}{l}{\color{red}\textbf{#1}} & \textbf{\color{red}#2} \\
+}
+
+\newcommand{\mezera}{
+    \rule{0pt}{1ex} & & & \\
+}
+
+\newcommand{\oceneny}[3]{
+    #1~místo & \textit{#2:} #3 \\
+}
+
+\title{to mikulas}
+\author{rzehumat}
+
+\date{April 2021}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot[C]{\thepage}
+
+\newcommand{\comma}{,}
+\input{items.tex}
+
+\begin{document}
+
+\begin{titlepage}
+   \begin{center}
+       \vspace*{4cm}
+
+        \LARGE{\textbf{Jaderná energetika v~pracích mladé generace~--~\thisYear}}
+
+        \vspace{0.8cm}
+
+        \Large{Mikulášské setkání Mladé generace ČNS}
+
+        \vfill
+
+        PLACE\\
+        DATE\\
+
+        \vfill
+
+        \sponzori{sponsor1}{sponsor2}{sponsor3}{sponsor4}{sponsor5}
+
+    \end{center}
+\end{titlepage}
+
+
+\tableofcontents
+\newpage
+
+\setcounter{secnumdepth}{-1}
+
+\pagestyle{patickaSponzoru}
+\section{Program setkání}
+\dayHeader{Středa DATE}
+\begin{table}[h]
+    \begin{tabular}{r c l p{0.85\textwidth}}
+        \bigEvent{18:00}{Společná procházka Brnem a výstup na věž Staré radnice}
+        \bigEvent{19:00}{Večerní posezení}
+    \end{tabular}
+\end{table}
+
+\dayHeader{Čtvrtek DATE}
+\begin{table}[h]
+    \begin{tabular}{r c l p{0.85\textwidth}}
+        \bigEvent{9:00}{Oficiální zahájení Mikulášského setkání}
+        \bigEvent{9:10}{Předání cen a prezentace oceněných diplomantů}
+        \eventNoPer{9:10}{9:20}{Představení soutěže závěrečných prací}
+        \eventNoPer{9:20}{9:40}{Oceněný BP -- 3. místo}
+        \eventNoPer{9:40}{10:00}{Oceněný BP -- 2. místo}
+        \eventNoPer{10:00}{10:20}{Oceněný BP -- 1. místo}
+        \eventNoPer{10:20}{10:30}{Přestávka}
+        \eventNoPer{10:30}{10:50}{Oceněný DP -- 3. místo}
+        \eventNoPer{10:50}{11:10}{Oceněný DP -- 2. místo}
+        \eventNoPer{11:10}{11:30}{Oceněný DP -- 1. místo}
+        \event{11:30}{11:45}{}{Představení Mladé generace České nukleární společnosti}
+        \eventNoPer{11:45}{12:00}{Přestávka}
+        \bigEvent{12:00}{Prezentace hosta setkání}
+        \event{}{}{}{}
+        \bigEvent{13:00}{Oběd}
+        \bigEvent{14:00}{Prezentace prací mladých odborníků}
+        \event{14:00}{14:20}{}{}
+        \event{14:20}{14:40}{}{}
+        \event{14:40}{15:00}{}{}
+        \event{15:00}{15:20}{}{}
+        \event{15:20}{15:40}{}{}
+        \event{15:40}{16:00}{}{}
+        \bigEvent{16:00}{Zakončení setkání}
+        \bigEvent{17:30}{Večerní posezení}
+    \end{tabular}
+\end{table}
+
+\dayHeader{Pátek DATE}
+\begin{table}[h]
+    \begin{tabular}{r c l p{0.85\textwidth}}
+        \bigEvent{9:00}{Exkurze}
+    \end{tabular}
+\end{table}
+\newpage
+
+\pagestyle{patickaSponzoru}
+
+\section{O Mikulášském setkání}
+ {\normalsize Mikulášské setkání je akcí Mladé generace České nukleární společnosti určené především mladým lidem studujícím či pracujícím v~jaderné oblasti. Smyslem setkání je propojit mladé lidi z~různých koutů České republiky a~umožnit jim prezentovat jejich práci. Hlavní náplní Mikulášského setkání je prezentace oceněných bakalářských a~magisterských prací v~soutěži, která je pravidelně pořádána Českou nukleární společností společně s~ÚJV Řež.}
+
+\vspace{1cm}
+
+\section{O Mladé generaci ČNS}
+ {\normalsize Mladá generace České nukleární společnosti (CYG - Czech Young Generation) byla založena 7.~7.~1997. CYG je jednou ze sekcí České nukleární společnsti a~je také členem Young Generation Network při Evropské nukleární společnosti a~International Youth Nuclear Congress~(IYNC). Sdružuje mladé lidi do 36 let z~jaderného odvětví. Hlavním cílem Mladé generace je zajistit setkávání členů, a~tak pomoci jejich rozvoji, získávání kontaktů a~sociálních vazeb v~jaderné komunitě. Každoročně pořádá pro členy CYG několik akcí jako jsou například exkurze do tuzemských i~zahraničních jaderných provozů (Aprílové setkání) či pravidelná setkání se slovenskou Mladou generací.}
+
+
+\newpage
+\section{Oceněné studentské práce \thisYear}
+ {\normalsize Na Mikulášském setkání byly vyhlášeny nejlepší bakalářské,diplomové a disertační práce v jaderných oborech za rok \thisYear. Oceněny byly následující práce:}\\
+
+\noindent\textbf{\large{Bakalářské práce}}
+\begin{table}[h]
+    \begin{tabular}{r p{0.85\textwidth}}
+        \oceneny{I.}{\name1}{\article1}
+        \oceneny{II.}{\name2}{\article2}
+        \oceneny{III.}{\name3}{\article3}
+    \end{tabular}
+\end{table}
+
+
+\noindent\textbf{\large{Diplomové práce}}
+\begin{table}[h]
+    \begin{tabular}{r p{0.85\textwidth}}
+        \oceneny{I.}{\nameDP1}{\articleDP1}
+        \oceneny{II.}{\nameDP2}{\articleDP2}
+        \oceneny{III.}{\nameDP3}{\articleDP3}
+    \end{tabular}
+\end{table}
+
+
+% optionally add Disertations
+\vfill
+
+\newpage
+\pagestyle{paper}
+
+\phantomsection
+\addcontentsline{toc}{section}{Články}
+
+\input{clanky.tex}
+
+
+\newpage
+\pagestyle{patickaSponzoru}
+
+\vspace*{13cm}
+
+\begin{table}[h]%
+    \begin{tabular}{p{0.2\textwidth} p{0.8\textwidth}}%
+        \multicolumn{2}{l}{Jaderná energetika v pracích mladé generace -- \thisYear} \\
+                            &                           \\
+        Nakladatel:         & Česká nukleární společnost, z. s. (org. č.) \\
+                            & V Holešovickách 747/2     \\
+                            & 180 00 Praha              \\
+        Autor:              & kolektiv autorů           \\
+        Rok vydání: 	    & 2021, vydání první        \\
+        Forma vydání:       & vydáno pouze na CD-ROM    \\    
+        Materiály sestavil: & Matěj Rzehulka            \\
+        ISBN:               & TODO                      \\
+                            &                           \\
+        \multicolumn{2}{l}{Příspěvky jednotlivých autorů nebyly textově ani jazykově upravovány}
+    \end{tabular}%
+\end{table}%
+\vfill
+
+\end{document}
